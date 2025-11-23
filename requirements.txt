@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+sqlalchemy
+alembic
+psycopg2-binary
+pydantic
+pydantic-settings
+boto3
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+prometheus-fastapi-instrumentator
