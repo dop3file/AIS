@@ -12,3 +12,7 @@ passlib[bcrypt]
 bcrypt==4.0.1
 prometheus-fastapi-instrumentator
 pydantic[email]
+pytest
+pytest-asyncio
+httpx
+faker

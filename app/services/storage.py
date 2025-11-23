@@ -1,8 +1,9 @@
 import boto3
 from botocore.exceptions import ClientError
-from fastapi import UploadFile
+from botocore.client import Config
 from app.core.config import settings
 import uuid
+from fastapi import UploadFile
 
 class StorageService:
     def __init__(self):
@@ -11,8 +12,9 @@ class StorageService:
             endpoint_url=settings.S3_ENDPOINT,
             aws_access_key_id=settings.S3_ACCESS_KEY,
             aws_secret_access_key=settings.S3_SECRET_KEY,
+            config=Config(signature_version='s3v4')
         )
-        self.bucket_name = settings.S3_BUCKET
+        self.bucket_name = settings.S3_BUCKET_NAME
         self._ensure_bucket_exists()
 
     def _ensure_bucket_exists(self):
@@ -47,6 +49,9 @@ class StorageService:
                 Params={'Bucket': self.bucket_name, 'Key': s3_key},
                 ExpiresIn=expiration
             )
+            # Replace internal Docker hostname with localhost for browser access
+            response = response.replace('minio:9000', 'localhost:9000')
+            response = response.replace('http://minio:9000', 'http://localhost:9000')
             return response
         except ClientError as e:
             print(f"Error generating presigned URL: {e}")

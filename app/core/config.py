@@ -15,6 +15,10 @@ class Settings(BaseSettings):
     S3_BUCKET: str
 
     @property
+    def S3_BUCKET_NAME(self) -> str:
+        return self.S3_BUCKET
+
+    @property
     def SQLALCHEMY_DATABASE_URI(self) -> str:
         return f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_SERVER}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
 
