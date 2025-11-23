@@ -8,6 +8,9 @@ class NotificationBase(BaseModel):
     scheduled_time: datetime
     audio_file_id: int
     zone_id: int
+    is_recurring: Optional[bool] = False
+    recurrence_pattern: Optional[str] = None
+    recurrence_end_date: Optional[datetime] = None
 
 class NotificationCreate(NotificationBase):
     pass

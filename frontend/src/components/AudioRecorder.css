@@ -1,0 +1,119 @@
+.audio-recorder {
+    padding: 1.5rem;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.recorder-start {
+    text-align: center;
+}
+
+.recorder-start p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.record-btn {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+}
+
+.recording-active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.pulse-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pulse-dot {
+    width: 40px;
+    height: 40px;
+    background: var(--danger);
+    border-radius: 50%;
+    position: relative;
+    animation: pulse-ring 1.5s ease-out infinite;
+}
+
+.pulse-dot::before,
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--danger);
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+.pulse-dot::before {
+    animation: pulse-ring 1.5s ease-out 0.5s infinite;
+}
+
+.pulse-dot::after {
+    animation: pulse-ring 1.5s ease-out 1s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+.recording-time {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--danger);
+    font-variant-numeric: tabular-nums;
+}
+
+.recording-active p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.audio-preview {
+    width: 100%;
+    text-align: center;
+}
+
+.audio-preview h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.audio-player {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.preview-actions button {
+    min-width: 150px;
+}
