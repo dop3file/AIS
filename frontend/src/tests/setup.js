@@ -2,12 +2,12 @@ import '@testing-library/jest-dom';
 import { expect, afterEach } from 'vitest';
 import { cleanup } from '@testing-library/react';
 
-// Cleanup after each test
+
 afterEach(() => {
     cleanup();
 });
 
-// Mock window.matchMedia
+
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: (query) => ({
@@ -22,7 +22,7 @@ Object.defineProperty(window, 'matchMedia', {
     }),
 });
 
-// Mock MediaRecorder API for audio recording tests
+
 global.MediaRecorder = class MediaRecorder {
     constructor() {
         this.state = 'inactive';
@@ -38,7 +38,7 @@ global.MediaRecorder = class MediaRecorder {
     }
 };
 
-// Mock navigator.mediaDevices
+
 Object.defineProperty(navigator, 'mediaDevices', {
     value: {
         getUserMedia: () => Promise.resolve({

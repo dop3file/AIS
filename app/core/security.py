@@ -10,7 +10,7 @@ from app.core.config import settings
 from app.core.database import get_db
 from app.models.user import User
 
-SECRET_KEY = "your-secret-key-here-change-in-production"
+SECRET_KEY = "SECRET_KEY"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
